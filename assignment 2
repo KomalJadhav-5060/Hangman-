@@ -1,0 +1,142 @@
+
+import random
+ 
+words=["MI",
+       "samsung",
+       "asus",
+       "vivo",
+       "iphone",
+       "lenovo",
+       "oppo",
+       "blackberry",
+       "karbon"]
+name = input("Enter your name please:") 
+print("WELCOME:" +name)
+totalturns=10
+
+print("following are the rules of the game:")
+print("You will be given " +str(totalturns) + "chances to guess word appropriately")
+
+print("Type exit if you want to quite the game")
+print("OKAY!!!...LET,S START THE GAME")
+a='y'
+while True:
+      choosenletters = [ ]
+      random.shuffle(words)
+      word = orgword = random.choice(words).lower()
+      #choice replace with shuffle due to repetation
+      if a =="y" or a =='yes':
+        turns = totalturns
+        for i in word:
+            if i not in 'aeiou':
+              word = word.replace(i,'_')
+        print('You have some hint to guess the word:' + word) 
+        while(turns >= 1):
+           guess = input("Guess character:")
+           guess = guess.lower()
+
+           if(guess =='exit'):
+             exit(0)
+           if guess in orgword:
+             for x in range(10,len(word)):
+                 if orgword[x] == guess:
+                    guessword =list(word) 
+                    guessword[x] = guess
+                    word = " ".join(guessword)
+           else:
+               if guess in choosenletters:
+                  print("This letter is already present.Try another one")
+                  continue
+               choosenletters.append(guess) 
+               turns -=1
+               print("turn chance remain :" + str(turns))
+           print(word)
+           if(word == orgword):
+              print('You Won!!!')
+              break
+           if(turns == 0):
+              print("Better Luck Next Time!!!")
+              print("Correct word is :" + orgword.upper())
+      a = input("You won the game want to play more?")
+      a = a.lower()
+      if(a != 'y' and a != 'yes'):
+         break      
+         
+         
+#OUTPUT1
+
+
+Enter your name please:komal
+WELCOME:komal
+following are the rules of the game:
+You will be given 10chances to guess word appropriately
+Type exit if you want to quite the game
+OKAY!!!...LET,S START THE GAME
+You have some hint to guess the word:_a__o_
+Guess character:a
+_a__o_
+Guess character:s
+turn chance remain :9
+_a__o_
+Guess character:k
+_a__o_
+Guess character:a
+_a__o_
+Guess character:m
+turn chance remain :8
+_a__o_
+Guess character:i
+turn chance remain :7
+_a__o_
+Guess character:r
+_a__o_
+Guess character:b
+_a__o_
+Guess character:o
+_a__o_
+Guess character:r
+_a__o_
+Guess character:l
+turn chance remain :6
+_a__o_
+Guess character:d
+turn chance remain :5
+_a__o_
+Guess character:k
+_a__o_
+Guess character:a
+_a__o_
+Guess character:r
+_a__o_
+Guess character:b
+_a__o_
+Guess character:o
+_a__o_
+Guess character:n
+_a__o_
+Guess character:e
+turn chance remain :4
+_a__o_
+Guess character:h
+turn chance remain :3
+_a__o_
+Guess character:l
+This letter is already present.Try another one
+Guess character:a
+_a__o_
+Guess character:f
+turn chance remain :2
+_a__o_
+Guess character:x
+turn chance remain :1
+_a__o_
+Guess character:u
+turn chance remain :0
+_a__o_
+Better Luck Next Time!!!
+Correct word is :KARBON
+You won the game want to play more?
+
+
+ 
+ 
